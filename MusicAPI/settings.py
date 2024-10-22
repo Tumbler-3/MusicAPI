@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    'rest_framework',
+    'django_filters',
+    
     'apps.Music',
     'apps.User',
 ]
@@ -114,6 +117,12 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
+}
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'

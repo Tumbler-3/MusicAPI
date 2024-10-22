@@ -3,21 +3,43 @@ from apps.User.models import Author
 
 
 class Genre(models.Model):
-    name = models.CharField(verbose_name='genre_name', max_length=200)
-    desription = models.TextField(verbose_name='genre_description')
+    name = models.CharField(verbose_name='genre name', max_length=200)
+    description = models.TextField(verbose_name='genre description')
+
+    def __str__(self):
+        return f'{self.name}'
+
+    class Meta:
+        verbose_name = 'Genre',
+        verbose_name_plural = 'Genres'
 
 
 class Album(models.Model):
-    name = models.CharField(verbose_name='album_name', max_length=200)
-    length = models.TimeField(verbose_name='album_length')
-    genre = models.CharField(verbose_name='album_genre', max_length=100)
+    name = models.CharField(verbose_name='album name', max_length=200)
+    length = models.DurationField(verbose_name='album length')
+    genre = models.ManyToManyField(
+        Genre, verbose_name='album genre', max_length=100)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
-    image = models.ImageField(verbose_name='album_genre')
+    cover = models.ImageField(verbose_name='album cover')
+
+    def __str__(self):
+        return f'{self.name}'
+
+    class Meta:
+        verbose_name = 'Album',
+        verbose_name_plural = 'Albums'
 
 
 class Song(models.Model):
-    name = models.CharField(verbose_name='song_name', max_length=200)
+    name = models.CharField(verbose_name='song name', max_length=200)
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
-    length = models.TimeField(verbose_name='song_length')
-    genre = models.ForeignKey(Genre, on_delete=models.PROTECT)
+    length = models.DurationField(verbose_name='song length')
+    genre = models.ManyToManyField(Genre, verbose_name='song genre')
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Song',
+        verbose_name_plural = 'Songs'
+
+    def __str__(self):
+        return f'{self.name}'
