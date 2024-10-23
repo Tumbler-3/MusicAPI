@@ -7,7 +7,6 @@ class CharInFilter(rf.BaseInFilter, rf.CharFilter):
 
 
 class AlbumFilter(rf.FilterSet):
-    author = CharInFilter(field_name='author__name', lookup_expr='in')
     genre = CharInFilter(field_name='genre__name', lookup_expr='in')
     
     class Meta:
@@ -16,7 +15,6 @@ class AlbumFilter(rf.FilterSet):
 
 
 class SongFilter(rf.FilterSet):
-    author = CharInFilter(field_name='author__name', lookup_expr='in')
     genre = CharInFilter(field_name='genre__name', lookup_expr='in')
     album = CharInFilter(field_name='album__name', lookup_expr='in')
     

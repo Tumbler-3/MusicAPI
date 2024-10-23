@@ -19,8 +19,10 @@ from django.urls import path, include
 from django.urls import re_path
 from MusicAPI import settings
 from django.views.static import serve
+from apps.Music.views import main
 
 urlpatterns = [
+    path('', main),
     path('admin/', admin.site.urls),
     path('api/v1/', include('apps.Music.urls')),
 

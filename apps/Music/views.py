@@ -4,6 +4,10 @@ from apps.Music.models import Genre, Album, Song
 from apps.Music.serializers import GenreModelSerializer, AlbumModelSerializer, SongModelSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from apps.Music.service import AlbumFilter, SongFilter
+from django.shortcuts import render
+
+def main(request):
+    return render(request, 'main.html')
 
 
 class GenreViewAPI(ListCreateAPIView):
