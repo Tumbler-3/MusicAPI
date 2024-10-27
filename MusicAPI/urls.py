@@ -19,16 +19,27 @@ from django.urls import path, include
 from django.urls import re_path
 from MusicAPI import settings
 from django.views.static import serve
-from apps.Music.views import main
+from apps.Genre.views import main
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+
 
 urlpatterns = [
     path('', main),
     path('admin/', admin.site.urls),
-    path('api/v1/', include('apps.Music.urls')),
+    path('api/v1/', include('apps.Author.urls')),
+    path('api/v1/', include('apps.Album.urls')),
+    path('api/v1/', include('apps.Genre.urls')),
+    path('api/v1/', include('apps.Song.urls')),
 
 
     re_path(r'^media/(?P<path>.*)$', serve,
             {'document_root': settings.MEDIA_ROOT}),
     re_path(r'^static/(?P<path>.*)$', serve,
             {'document_root': settings.STATIC_ROOT}),
+
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/schema/swagger-ui/',
+         SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
+    path('api/schema/redoc/',
+         SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]

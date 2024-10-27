@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,8 +42,19 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
 
-    'apps.Music',
+    'drf_spectacular',
+
+
+    'apps.Author',
+    'apps.Genre',
+    'apps.Album',
+    'apps.Song',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    # ...
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -136,3 +148,75 @@ STATIC_ROOT = BASE_DIR / 'static'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Triathlon Center",  # Заголовок админ-панели
+    "site_header": "Triathlon Center",  # Заголовок на экране входа
+    "site_brand": "Triathlon Center",  # Бренд в верхней части админ-панели
+    "welcome_sign": "Добро пожаловать в Triathlon Center",  # Приветственное сообщение
+    "site_title": "Triathlon Center",  # Заголовок админ-панели
+    "site_header": "Triathlon Center",  # Заголовок на экране входа
+    "site_brand": "Triathlon Center",  # Бренд в верхней части админ-панели
+    "welcome_sign": "Добро пожаловать в Triathlon Center",  # Приветственное сообщение
+    "search_model": [],  # Модели, доступные для поиска
+    "changeform_format": "horizontal_tabs",
+    # override change forms on a per modeladmin basis
+    "changeform_format_overrides": {"auth.user": "collapsible", "apps.Abonement.models.Abonement": "horizontal_tabs"},
+    "topmenu_links": [
+        {"name": "Home", "url": "admin:index",
+            "permissions": ["auth.view_user"]},
+    ],
+    "show_sidebar": True,
+    "show_language_chooser": True,  # Включить выбор языка в админ-панели
+    "custom_css": None,  # Путь к пользовательскому CSS-файлу (если нужен)
+    "show_ui_builder": True,  # Показать UI Builder
+    "menu": [
+        {
+            "app": "index",  # Имя вашего приложения Django
+            "name": "Основные параметры",  # Имя модели
+            "icon": "fa fa-cogs",  # Иконка для меню
+            "models": [
+                {
+                    "name": "Первая модель",  # Имя вашей модели
+                    "icon": "fa fa-cog",  # Иконка для модели
+                    "model": "index.Settings",  # Имя модели в формате "app_label.model_name"
+                },
+                # Добавьте другие модели, если необходимо
+            ],
+        },
+        # Добавьте другие приложения и модели, если необходимо
+    ],
+
+}
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": True,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": False,
+    "accent": "accent-success",
+    "navbar": "navbar-dark",
+    "no_navbar_border": False,
+    "navbar_fixed": False,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": False,
+    "sidebar": "sidebar-dark-success",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": False,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "superhero",
+    "dark_mode_theme": None,
+    "button_classes": {
+        "primary": "btn-primary",
+        "secondary": "btn-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success"
+    }
+}
