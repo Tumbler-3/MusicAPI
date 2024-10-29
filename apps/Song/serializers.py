@@ -9,5 +9,5 @@ class SongModelSerializer(serializers.ModelSerializer):
     album_name = serializers.ReadOnlyField(source='album.name')
 
     class Meta:
-        model = Song  # I used Song model as base for Album Serializer
+        model = Song  # Song model is base for Album Serializer
         fields = '__all__'
