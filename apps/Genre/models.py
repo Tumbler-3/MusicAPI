@@ -1,8 +1,9 @@
 from django.db import models
 
+
+# Creating Genre Model for Database
 class Genre(models.Model):
-    name = models.CharField(verbose_name='genre name', max_length=200)
-    description = models.TextField(verbose_name='genre description')
+    name = models.CharField(verbose_name='genre name', max_length=200, unique=True)
 
     def __str__(self):
         return f'{self.name}'

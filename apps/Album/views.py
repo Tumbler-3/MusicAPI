@@ -4,18 +4,19 @@ from apps.Album.models import Album
 from apps.Album.serializers import AlbumModelSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from apps.Album.service import AlbumFilter
-from django.shortcuts import render
 
 
+# View for Album Serializer
 class AlbumViewAPI(ListCreateAPIView):
-    queryset = Album.objects.all()
-    serializer_class = AlbumModelSerializer
-    pagination_class = PageNumberPagination
-    filter_backends = (DjangoFilterBackend,)
-    filterset_class = AlbumFilter
+    queryset = Album.objects.all() # Data taken from Album model
+    serializer_class = AlbumModelSerializer # Using Album serializer for showing and creating
+    pagination_class = PageNumberPagination # pagination
+    filter_backends = (DjangoFilterBackend,) #filtration backend
+    filterset_class = AlbumFilter # filtration for view
 
 
+# Detain view for Album Serializer
 class AlbumDetailViewAPI(RetrieveUpdateDestroyAPIView):
-    queryset = Album.objects.all()
-    serializer_class = AlbumModelSerializer
-    lookup_field = 'id'
+    queryset = Album.objects.all() # Data taken from Album model
+    serializer_class = AlbumModelSerializer # Using Album serializer for showing, updating, deleting
+    lookup_field = 'id' # showing 1 object via id

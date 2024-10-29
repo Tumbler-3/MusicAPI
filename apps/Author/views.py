@@ -3,14 +3,14 @@ from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIV
 from apps.Author.models import Author
 from apps.Author.serializers import AuthorModelSerializer
 
-
+# View for Author Serializer
 class AuthorViewAPI(ListCreateAPIView):
-    queryset = Author.objects.all()
-    serializer_class = AuthorModelSerializer
-    pagination_class = PageNumberPagination
+    queryset = Author.objects.all() # Data taken from Author model
+    serializer_class = AuthorModelSerializer # Using Author serializer for showing and creating
+    pagination_class = PageNumberPagination # pagination
 
-
+# Detain view for Author Serializer
 class AuthorDetailViewAPI(RetrieveUpdateDestroyAPIView):
-    queryset = Author.objects.all()
-    serializer_class = AuthorModelSerializer
-    lookup_field = 'id'
+    queryset = Author.objects.all() # Data taken from Author model
+    serializer_class = AuthorModelSerializer # Using Author serializer for showing, updating, deleting
+    lookup_field = 'id' # showing 1 object via id
