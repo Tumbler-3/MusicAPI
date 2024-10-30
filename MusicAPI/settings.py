@@ -151,14 +151,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 JAZZMIN_SETTINGS = {
-    "site_title": "Triathlon Center",  # Заголовок админ-панели
-    "site_header": "Triathlon Center",  # Заголовок на экране входа
-    "site_brand": "Triathlon Center",  # Бренд в верхней части админ-панели
-    "welcome_sign": "Добро пожаловать в Triathlon Center",  # Приветственное сообщение
-    "site_title": "Triathlon Center",  # Заголовок админ-панели
-    "site_header": "Triathlon Center",  # Заголовок на экране входа
-    "site_brand": "Triathlon Center",  # Бренд в верхней части админ-панели
-    "welcome_sign": "Добро пожаловать в Triathlon Center",  # Приветственное сообщение
+    "site_title": "Music Library",  # Заголовок админ-панели
+    "site_header": "Music Library",  # Заголовок на экране входа
+    "site_brand": "Music Library",  # Бренд в верхней части админ-панели
+    "welcome_sign": "Welcome to Music Library",  # Приветственное сообщение
     "search_model": [],  # Модели, доступные для поиска
     "changeform_format": "horizontal_tabs",
     # override change forms on a per modeladmin basis
