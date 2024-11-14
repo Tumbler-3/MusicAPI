@@ -42,18 +42,20 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
 
-    'drf_spectacular',
 
 
     'apps.Author',
     'apps.Genre',
     'apps.Album',
-    'apps.Song',
+    'apps.Song', 
+    'drf_spectacular',
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-    # ...
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
 }
 
 MIDDLEWARE = [
@@ -130,12 +132,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': (
-        'django_filters.rest_framework.DjangoFilterBackend',
-    ),
-}
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
