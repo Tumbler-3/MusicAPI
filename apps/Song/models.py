@@ -15,7 +15,7 @@ class Song(models.Model):
         Genre, on_delete=models.PROTECT, verbose_name='song genre', blank=True, null=True)
     author = models.ForeignKey(
         Author, on_delete=models.PROTECT, verbose_name='song author', blank=True, null=True)
-    file = models.FileField(verbose_name="song file", upload_to='media/')
+    file = models.FileField(verbose_name="song file", upload_to='songs/', serialize=True)
 
     class Meta:
         verbose_name = 'Song',
