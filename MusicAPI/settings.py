@@ -47,9 +47,13 @@ INSTALLED_APPS = [
     'apps.Author',
     'apps.Genre',
     'apps.Album',
-    'apps.Song', 
+    'apps.Song',
     'drf_spectacular',
 ]
+
+SPECTACULAR_SETTINGS = {
+    'SCHEMA_PATH_PREFIX': r'/api/v[0-9]',
+}
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
